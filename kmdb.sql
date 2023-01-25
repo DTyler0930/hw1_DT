@@ -124,15 +124,24 @@ CREATE TABLE actors (
 
 CREATE TABLE cast (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movie_title TEXT,
-  actor_name TEXT,
-  actoer_id INTEGER,
-  character_name TEXT
+  movie_id; INTERGER
+  character_name TEXT,
+  actor_id INTEGER,
 );
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+INSERT INTO movies (id, movie_title, release_year, rating, studio)
+VALUES (101, "Batman Begins", 2005, "PG-13", "Warner Bros.");
+
+INSERT INTO movies (id, movie_title, release_year, rating, studio)
+VALUES (102, "Dark Knight", 2008, "PG-13", "Warner Bros.");
+
+INSERT INTO movies (id, movie_title, release_year, rating, studio)
+VALUES (103, "Dark Knight Rises", 2008, "PG-13", "Warner Bros.");
+
+
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -141,6 +150,9 @@ CREATE TABLE cast (
 
 -- The SQL statement for the movies output
 -- TODO!
+
+SELECT movie_title, release_year, rating, studio 
+FROM movies;
 
 -- Prints a header for the cast output
 .print ""
