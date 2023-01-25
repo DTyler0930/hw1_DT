@@ -96,7 +96,7 @@
 -- The Dark Knight Rises  Anne Hathaway         Selina Kyle
 
 -- Turns column mode on but headers off
-.mode column
+.mode column on
 .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
@@ -113,19 +113,20 @@ CREATE TABLE movies (
   movie_title TEXT,
   release_year INTEGER,
   rating TEXT,
-  studio TEXT
+  studio TEXT,
+  cast_id INTEGER
 );
 
 CREATE TABLE actors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  actor_name TEXT,
-  character_name TEXT
+  actor_name TEXT
 );
 
 CREATE TABLE cast (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_title TEXT,
   actor_name TEXT,
+  actoer_id INTEGER,
   character_name TEXT
 );
 
