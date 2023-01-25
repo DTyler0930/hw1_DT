@@ -181,11 +181,6 @@ VALUES (101, 201, "Bruce Wayne"),
 SELECT movie_title, release_year, rating, studio 
 FROM movies;
 
-SELECT actor_name
-FROM actor;
-
-SELECT movie_id, actor_id, character_name
-FROM cast;
 
 -- Prints a header for the cast output
 .print ""
@@ -193,9 +188,11 @@ FROM cast;
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
 -- TODO!
-SELECT movies.movie_title, actor.actor_name, cast.character_name
-FROM movies
-INNER JOIN cast ON 
+SELECT movie_title, actor_name, character_name
+FROM movies;
+INNER JOIN cast
+ON movies.id = cast.movie_id
+INNER JOIN actor
+ON actor.id = cast.actor_id;
