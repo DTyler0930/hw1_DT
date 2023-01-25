@@ -113,30 +113,62 @@ CREATE TABLE movies (
   movie_title TEXT,
   release_year INTEGER,
   rating TEXT,
-  studio TEXT,
-  cast_id INTEGER
+  studio TEXT
 );
+
+
+CREATE TABLE actor (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  actor_name TEXT
+);
+
 
 CREATE TABLE cast (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  actor_name TEXT, 
+  movie_id INTEGER,
+  actor_id INTERGER, 
   character_name TEXT
 );
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
---INSERT INTO movies (id, movie_title, release_year, rating, studio)
---VALUES (101, "Batman Begins", 2005, "PG-13", "Warner Bros."),
---(102, "Dark Knight", 2008, "PG-13", "Warner Bros."),
---(103, "Dark Knight Rises", 2008, "PG-13", "Warner Bros.");
+INSERT INTO movies (id, movie_title, release_year, rating, studio)
+VALUES (101, "Batman Begins", 2005, "PG-13", "Warner Bros."),
+(102, "Dark Knight", 2008, "PG-13", "Warner Bros."),
+(103, "Dark Knight Rises", 2008, "PG-13", "Warner Bros.");
 
-INSERT INTO cast (id, actor_name, character_name)
-VALUES (201, "Christian Bell", "Bruce Wayne"), (203, "Michael Caine","Alfred"), (204, "Liam Neeson","Ra's Al Ghul"), 
-(205, "Katie Holmes","Rachel Dawes"), (206, "Gary Oldman","Commissioner Gordon"), (207, "Heath Ledger", "The Joker"), 
-(208, "Aaron Eckhart","Harvey Dent"), (209, "Maggie Gyllenhaal","Rachel Dawes"), (210, "Tom Hardy","Bane"), 
-(211,"Joseph Gordon-Levitt", "John Blake"), (212, "Anne Hathaway","Selina Kyle");
 
+INSERT INTO actor (id, actor_name)
+VALUES (201, "Christian Bale"),        
+(202, "Michael Caine"),   
+(203, "Liam Neeson"),          
+(204, "Katie Holmes"),    
+(205, "Gary Oldman"),        
+(206, "Heath Ledger"),        
+(207, "Aaron Eckhart"),              
+(208, "Maggie Gyllenhaal"),
+(209, "Tom Hardy"),
+(210, "Joseph Gordon-Levitt"),
+(211, "Anne Hathaway");
+
+
+INSERT INTO cast (movie_id, actor_id, character_name)
+VALUES (101, 201, "Bruce Wayne"),        
+(101, 202, "Alfred"),   
+(101, 203, "Ra's Al Ghul"),          
+(101, 204, "Rachel Dawes"),    
+(101, 205, "Commissioner Gordon"),        
+(102, 206, "The Joker"),        
+(102, 207, "Harvey Dent"),             
+(102,208, "Rachel Dawes"),
+(102, 201, "Bruce Wayne"),        
+(102, 202, "Alfred"),   
+(103, 209, "Bane"),
+(103, 210, "John Blake"),
+(103, 211, "Selina Kyle"),
+(103, 201, "Bruce Wayne"),
+(103, 205, "Commissioner Gordon"); 
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -149,6 +181,12 @@ VALUES (201, "Christian Bell", "Bruce Wayne"), (203, "Michael Caine","Alfred"), 
 SELECT movie_title, release_year, rating, studio 
 FROM movies;
 
+SELECT actor_name
+FROM actor;
+
+SELECT movie_id, actor_id, character_name
+FROM cast;
+
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"
@@ -158,5 +196,6 @@ FROM movies;
 
 -- The SQL statement for the cast output
 -- TODO!
-SELECT id, actor_name, character_name
-FROM cast;
+SELECT movies.movie_title, actor.actor_name, cast.character_name
+FROM movies
+INNER JOIN cast ON 
