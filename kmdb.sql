@@ -132,10 +132,16 @@ CREATE TABLE cast (
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
-INSERT INTO movies (id, movie_title, release_year, rating, studio)
-VALUES (101, "Batman Begins", 2005, "PG-13", "Warner Bros."),
-(102, "Dark Knight", 2008, "PG-13", "Warner Bros."),
-(103, "Dark Knight Rises", 2008, "PG-13", "Warner Bros.");
+--INSERT INTO movies (id, movie_title, release_year, rating, studio)
+--VALUES (101, "Batman Begins", 2005, "PG-13", "Warner Bros."),
+--(102, "Dark Knight", 2008, "PG-13", "Warner Bros."),
+--(103, "Dark Knight Rises", 2008, "PG-13", "Warner Bros.");
+
+
+INSERT INTO actors (id, actor_name)
+VALUES (201, "Christian Bell"), (203, "Michael Caine"), (204, "Liam Neeson"), 
+(205, "Katie Holmes"), (206, "Gary Oldman"), (207, "Heath Ledger"), (208, "Aaron Eckhart"),
+(209, "Maggie Gyllenhaal"), (210, "Tom Hardy"), (211,"Joseph Gordon-Levitt" ), (212, "Anne Hathaway");
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -157,3 +163,5 @@ FROM movies;
 
 -- The SQL statement for the cast output
 -- TODO!
+SELECT id, actor_name 
+FROM actors;
