@@ -109,22 +109,21 @@ DROP TABLE IF EXISTS cast;
 -- Create new tables, according to your domain model
 -- TODO!
 CREATE TABLE movies (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id INTEGER PRIMARY KEY,
   movie_title TEXT,
   release_year INTEGER,
   rating TEXT,
   studio TEXT
 );
 
-
 CREATE TABLE actor (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id INTEGER,
   actor_name TEXT
 );
 
 
 CREATE TABLE cast (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id INTEGER PRIMARY KEY,
   movie_id INTEGER,
   actor_id INTERGER, 
   character_name TEXT
@@ -161,7 +160,7 @@ VALUES (101, 201, "Bruce Wayne"),
 (101, 205, "Commissioner Gordon"),        
 (102, 206, "The Joker"),        
 (102, 207, "Harvey Dent"),             
-(102,208, "Rachel Dawes"),
+(102, 208, "Rachel Dawes"),
 (102, 201, "Bruce Wayne"),        
 (102, 202, "Alfred"),   
 (103, 209, "Bane"),
@@ -191,8 +190,6 @@ FROM movies;
 -- The SQL statement for the cast output
 -- TODO!
 SELECT movie_title, actor_name, character_name
-FROM movies;
-INNER JOIN cast
-ON movies.id = cast.movie_id
-INNER JOIN actor
-ON actor.id = cast.actor_id;
+FROM cast
+INNER JOIN movies ON movie_id = movies.id
+INNER JOIN actor ON actor_id = actor.id;
