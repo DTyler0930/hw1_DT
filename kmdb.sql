@@ -117,7 +117,7 @@ CREATE TABLE movies (
   cast_id INTEGER
 );
 
-CREATE TABLE actors (
+CREATE TABLE cast (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   actor_name TEXT, 
   character_name TEXT
@@ -131,13 +131,12 @@ CREATE TABLE actors (
 --(102, "Dark Knight", 2008, "PG-13", "Warner Bros."),
 --(103, "Dark Knight Rises", 2008, "PG-13", "Warner Bros.");
 
-INSERT INTO actors (id, actor_name, character_name)
+INSERT INTO cast (id, actor_name, character_name)
 VALUES (201, "Christian Bell", "Bruce Wayne"), (203, "Michael Caine","Alfred"), (204, "Liam Neeson","Ra's Al Ghul"), 
 (205, "Katie Holmes","Rachel Dawes"), (206, "Gary Oldman","Commissioner Gordon"), (207, "Heath Ledger", "The Joker"), 
-(208, "Aaron Eckhart","Harvey Dent"), (209, "Maggie Gyllenhaal","Rachel Dawes"), (210, "Tom Hardy"), (211,"Joseph Gordon-Levitt" ), (212, "Anne Hathaway");
+(208, "Aaron Eckhart","Harvey Dent"), (209, "Maggie Gyllenhaal","Rachel Dawes"), (210, "Tom Hardy","Bane"), 
+(211,"Joseph Gordon-Levitt", "John Blake"), (212, "Anne Hathaway","Selina Kyle");
 
-INSERT INTO cast (id, character_name, movie_id, actor_id)
-VALUES (301,)
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -159,5 +158,5 @@ FROM movies;
 
 -- The SQL statement for the cast output
 -- TODO!
-SELECT id, actor_name 
-FROM actors;
+SELECT id, actor_name, character_name
+FROM cast;
