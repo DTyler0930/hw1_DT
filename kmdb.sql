@@ -119,14 +119,8 @@ CREATE TABLE movies (
 
 CREATE TABLE actors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  actor_name TEXT
-);
-
-CREATE TABLE cast (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movie_id INTERGER,
-  character_name TEXT,
-  actor_id INTEGER
+  actor_name TEXT, 
+  character_name TEXT
 );
 
 -- Insert data into your database that reflects the sample data shown above
@@ -137,11 +131,13 @@ CREATE TABLE cast (
 --(102, "Dark Knight", 2008, "PG-13", "Warner Bros."),
 --(103, "Dark Knight Rises", 2008, "PG-13", "Warner Bros.");
 
+INSERT INTO actors (id, actor_name, character_name)
+VALUES (201, "Christian Bell", "Bruce Wayne"), (203, "Michael Caine","Alfred"), (204, "Liam Neeson","Ra's Al Ghul"), 
+(205, "Katie Holmes","Rachel Dawes"), (206, "Gary Oldman","Commissioner Gordon"), (207, "Heath Ledger", "The Joker"), 
+(208, "Aaron Eckhart","Harvey Dent"), (209, "Maggie Gyllenhaal","Rachel Dawes"), (210, "Tom Hardy"), (211,"Joseph Gordon-Levitt" ), (212, "Anne Hathaway");
 
-INSERT INTO actors (id, actor_name)
-VALUES (201, "Christian Bell"), (203, "Michael Caine"), (204, "Liam Neeson"), 
-(205, "Katie Holmes"), (206, "Gary Oldman"), (207, "Heath Ledger"), (208, "Aaron Eckhart"),
-(209, "Maggie Gyllenhaal"), (210, "Tom Hardy"), (211,"Joseph Gordon-Levitt" ), (212, "Anne Hathaway");
+INSERT INTO cast (id, character_name, movie_id, actor_id)
+VALUES (301,)
 
 -- Prints a header for the movies output
 .print "Movies"
